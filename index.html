@@ -23,3 +23,108 @@
         .logo {
             width: 100%;
             max-width: 500px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #444;
+        }
+        .question {
+            font-size: 18px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            display: block;
+            background: #ddd;
+            padding: 10px;
+            margin: 5px;
+            width: 80%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        label:hover {
+            background: #ccc;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #FFD700;
+            color: black;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #FFC107;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: red;
+        }
+        .cta {
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Логотип -->
+        <img src="биологич возраст.png" alt="Логотип КОД ЖЕНЩИНЫ" class="logo">
+
+        <h2>Тест на биологический возраст</h2>
+        <p>Узнай, насколько твой организм старше или моложе твоего фактического возраста!</p>
+
+        <form id="quizForm">
+            <div class="question">1. Как ты чувствуешь себя после еды?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="5"> Сонливость, тяжесть</label>
+                <label><input type="radio" name="q1" value="2"> Чувствую себя нормально</label>
+                <label><input type="radio" name="q1" value="0"> Энергия, лёгкость</label>
+            </div>
+
+            <button type="button" onclick="calculateAge()">Узнать результат</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateAge() {
+            let totalScore = 0;
+            let questions = document.querySelectorAll('input[type="radio"]:checked');
+
+            if (questions.length < 1) {
+                alert("Ответь на вопрос!");
+                return;
+            }
+
+            questions.forEach((input) => {
+                totalScore += parseInt(input.value);
+            });
+
+            let ageOffset = totalScore >= 5 ? 10 : 0;
+            let userAge = prompt("Введите ваш реальный возраст:");
+
+            if (!userAge || isNaN(userAge) || userAge < 10 || userAge > 100) {
+                alert("Введите корректный возраст!");
+                return;
+            }
+
+            let bioAge = parseInt(userAge) + ageOffset;
+            document.getElementById("result").innerHTML = `
+                Твой биологический возраст: <strong>${bioAge}</strong> лет.<br><br>
+                <span class="cta">Присоединяйся к клубу «КОД ЖЕНЩИНЫ» и начни путь к омоложению сегодня!</span>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тест на биологический возраст | pH Nutrition</title>
+    <title>Тест на биологический возраст | КОД ЖЕНЩИНЫ</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -73,6 +73,24 @@
             color: #000;
             font-weight: bold;
         }
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .start-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: #E91E63;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .start-button:hover {
+            background: #C2185B;
+        }
     </style>
 </head>
 <body>
@@ -126,6 +144,8 @@
             <button type="button" onclick="calculateAge()">Узнать результат</button>
         </form>
         <div id="result"></div>
+
+ 
     </div>
 
     <script>
@@ -153,9 +173,11 @@
             let bioAge = parseInt(userAge) + ageOffset;
             document.getElementById("result").innerHTML = `
                 Твой биологический возраст: <strong>${bioAge}</strong> лет.<br><br>
-                <span class="cta">Важно заниматься молодостью сейчас, потом будет поздно! 
-                Присоединяйся к клубу «КОД ЖЕНЩИНЫ» к врачу интегративной и анти-эйдж медицины 
-                <strong>Чавдаровой Татьяне</strong> – начни путь к омоложению сегодня!</span>
+                <span class="cta">Важно заниматься молодостью сейчас! Присоединяйся к клубу <strong>«КОД ЖЕНЩИНЫ»</strong> к врачу интегративной и анти-эйдж медицины <strong>Чавдаровой Татьяне</strong> – начни путь к омоложению сегодня!</span> 
+<!-- Кнопка в конце сайта -->
+        <div class="button-container">
+            <a href="https://t.me/pH_nutrition_bot" class="start-button">Готова начать!</a>
+        </div>
             `;
         }
     </script>
